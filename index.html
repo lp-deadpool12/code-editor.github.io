@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/null.css">
+    <link rel="stylesheet" href="Sass/style.css">
+    <link rel="stylesheet" href="css/adaptive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>LP cipher</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__body">
+            <p class="header_title">LP CIPHER 1.0</p>
+            <img src="img/logotype.svg" alt="" class="logo">
+            <p class="header_text">CREATE CODE</p>
+        </div>
+    </header>
+    <section class="first_screen">
+        <div class="container">
+            <main class="container__body">
+                <h1 class="page_header">Write code right now</h1>
+                <div class="sub_block">
+                    <a href="CodeEditor.html"><button type="file" class="create_file btn">Create file</button></a>
+                    <a href="CodeEditor.html"><input class="open_file btn" type="file"></a>
+                </div>
+            </main>
+        </div>
+    </section>
+    <footer class="page_footer">
+        <div class="container footer__body">
+            <p class="footer_text">Made by <a target="_blank" href="https://www.instagram.com/lp_deadpool/" class="autor_contacs">lp deadpool</a></p>
+            <a id="open_pop_up" onclick="feedback()" href="#" class="feedback_pop_up">Feedback</a>
+        </div>
+    </footer>
+    <div id="wrapper" onclick="wrapperHide()" class="wrapper">
+        <div class="feedback_menu">
+            <div onclick="closePopUp" id="closePopUp" class="colse_pop_up">&#10005</div>
+            <h2 class="feedback_menu__h2">Feedback</h2>
+            <p class="feedback_menu__text">If you want know more about my project please write my instagram</p>
+            <button class="feedback_menu_btn"><a href="https://www.instagram.com/lp_deadpool/" target="_blank" rel="noopener noreferrer">@lp deadpool</a></button>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
