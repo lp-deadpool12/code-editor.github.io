@@ -24,78 +24,70 @@
         <div class="container header__body">
             <p class="header_title"><a href="index.html">LP CIPHER 1.0</a></p>
             <img src="img/logotype.svg" alt="" class="logo">
-            <div></div>
+            <div style="width: 26px;
+            height: 20px;"></div>
         </div>
-    </header>
-
-
-    <main id="main_content" class="main_content">
-        <div id="code" class="code_wrapper">
-            <div id="settingsMenuBtn" class="settingsMenuBtn">
-                <span></span>
-                <span style="margin: 5px 0px 5px;"></span>
-                <span></span>
-            </div>
-            <div id="tabs" class="tabs">
-                <div id="tab" class="tab default">
-                    <div class="nameWrapper">
-                        <p class="p" id="tabName">untitled</p>
+        <div id="settingsMenuBtn" class="settingsMenuBtn">
+            <span></span>
+            <span style="margin: 5px 0px 5px;"></span>
+            <span></span>
+        </div>
+        <div id="settingsMenu" class="settingsMenu">
+            <div class="menu_wrapper">
+                <div data-menu-close="close" class="close_menu">&#10005</div>
+                <h2>Settings</h2>
+                <ul class="menuList">
+                    <div>
+                        <li class="item">Download</li>
                     </div>
-                    <div onclick="closeTabBtn()" class="s" id="close_tab">&#10005</div>
-                </div>
-
-                <div class="createTabWrapper">
-                    <div id="CreateNewTab" class="open_tab">+</div>
+                    <div>
+                        <li class="item1">Save</li>
+                    </div>
+                    <div>
+                        <li onclick="oneWindow()" class="item2">One window</li>
+                    </div>
+                    <div>
+                        <li onclick="twoWindow()" class="item3">Two windows</li>
+                    </div>
+                    <div>
+                        <li onclick="threeWindow()" class="item4">Three windows</li>
+                    </div>
+                    <div>
+                        <li id="feedbackPopUpOpen" class="item5">Feedback</li>
+                    </div>
+                    <div>
+                        <li onclick="hideHeader()" id="hide_show_header" class="item6">Hide header</li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div id="feedback-wrapper" class="feedback-wrapper">
+            <div class="feedback_menu">
+                <div onclick="closePopUp" id="closePopUp" class="colse_pop_up">&#10005</div>
+                <h2 class="feedback_menu__h2">Feedback</h2>
+                <p class="feedback_menu__text">If you want know more about my project please write my instagram</p>
+                <button class="feedback_menu_btn"><a href="https://www.instagram.com/lp_deadpool/" target="_blank" rel="noopener noreferrer">@lp deadpool</a></button>
+            </div>
+    </header>
+    <div class="wrapper">
+        <div id="tabs" class="tabs">
+            <div id="tabs__body" class="tabs__body tabs">
+                <div data-tab="#0" class="tab active">
+                    <p id="tab-name">unnamed</p>
+                    <div data-close-tab="close-tab" class="close-tab">✕</div>
                 </div>
             </div>
-            <div class="tab_content">
-                <textarea name="" id="myTextarea" class="myTextarea" value="fff"></textarea>
+            <div id="create-tab" class="create-tab">+</div>
+        </div>
+        <div class="tabs-content">
+            <div data-tab-content="#0" class="content tab-content-active">
+                <textarea class="content_code-editor-area" name="" id=""></textarea>
             </div>
         </div>
-
-    </main>
-
-    <div id="settingsMenu" class="settingsMenu">
-        <div class="menu_wrapper">
-            <div id="close_menu" class="close_menu">&#10005</div>
-            <h2>Settings</h2>
-            <ul class="menuList">
-                <div>
-                    <li class="item">Download</li>
-                </div>
-                <div>
-                    <li class="item1">Save</li>
-                </div>
-                <div>
-                    <li class="item2">One window</li>
-                </div>
-                <div>
-                    <li class="item3">Two windows</li>
-                </div>
-                <div>
-                    <li class="item4">Three windows</li>
-                </div>
-                <div>
-                    <li id="feedbackPopUpOpen" class="item5">Feedback</li>
-                </div>
-                <div>
-                    <li onclick="hideHeader()" id="hide_show_header" class="item6">Hide header</li>
-                </div>
-            </ul>
-        </div>
-    </div>
-    <div id="wrapper" onclick="wrapperHide()" class="wrapper">
-        <div class="feedback_menu">
-            <div onclick="closePopUp" id="closePopUp" class="colse_pop_up">&#10005</div>
-            <h2 class="feedback_menu__h2">Feedback</h2>
-            <p class="feedback_menu__text">If you want know more about my project please write my instagram</p>
-            <button class="feedback_menu_btn"><a href="https://www.instagram.com/lp_deadpool/" target="_blank" rel="noopener noreferrer">@lp deadpool</a></button>
-        </div>
-    </div>
-    <script src="plugins/codemirror/lib/codemirror.js"></script>
-    <script src="plugins/codemirror/mode/javascript/javascript.js"></script>
-    <script src="plugins/codemirror/addon/hint/javascript-hint.js"></script>
-    <script src="js/codeEditor.js" defer></script>
+        <script src="plugins/codemirror/lib/codemirror.js"></script>
+        <script src="plugins/codemirror/mode/javascript/javascript.js"></script>
+        <script src="plugins/codemirror/addon/hint/javascript-hint.js"></script>
+        <script src="js/codeEditor.js" defer></script>
 </body>
 
 </html>

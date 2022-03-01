@@ -3,7 +3,7 @@ const openPopUp = document.getElementById('open_pop_up');
 const popUp = document.getElementById('wrapper')
 const popUpClose = document.getElementById('closePopUp')
 
-openPopUp.addEventListener('click', function(e){
+openPopUp.addEventListener('click', function(e) {
     e.preventDefault();
     popUp.classList.add('active');
 })
