@@ -182,43 +182,43 @@ body {
 }
 
 .settingsMenu .menu_wrapper ul .item::before {
-  content: url("/img/menu-icons/download.svg");
+  content: url(../img/menu-icons/download.svg);
   bottom: 3px;
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item1::before {
-  content: url("/img/menu-icons/save.svg");
+  content: url(../img/menu-icons/save.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item2::before {
-  content: url("/img/menu-icons/1w.svg");
+  content: url(../img/menu-icons/1w.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item3::before {
-  content: url("/img/menu-icons/2w.svg");
+  content: url(../img/menu-icons/2w.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item4::before {
-  content: url("/img/menu-icons/3w.svg");
+  content: url(../img/menu-icons/3w.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item5::before {
-  content: url("/img/menu-icons/fb.svg");
+  content: url(../img/menu-icons/fb.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item6:before {
-  content: url("/img/menu-icons/hh.svg");
+  content: url(../img/menu-icons/hh.svg);
   margin-right: 15px;
 }
 
 .settingsMenu .menu_wrapper ul .item6_hide:before {
-  content: url("/img/menu-icons/show.svg");
+  content: url(../img/menu-icons/show.svg);
   margin-right: 15px;
 }
 
@@ -343,6 +343,7 @@ body {
           flex-direction: column;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .tabs {
@@ -389,6 +390,7 @@ body {
 .tabs-content {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .tab {
@@ -462,7 +464,7 @@ body {
 .active {
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  background: #072328;
+  background: #062024;
   -webkit-animation: tabOpenAnimate 0.3s ease forwards;
           animation: tabOpenAnimate 0.3s ease forwards;
 }

@@ -43,7 +43,7 @@ function createTabs() { // Обявляем функцию
     createEl = document.createElement('div'); // Создаем новый div новый контейнер для вкладки
     createEl.className = 'tab'; // Добавляем новому диву калсс tab
     createEl.setAttribute("data-tab", "#" + tabСounter) // Добавляем новой вкладке атрибут data-tab со значеним счетчика вкладок
-    createEl.innerHTML = `<p>unnamed ${tabСounter}</p><div data-close-tab="close-tab" class="close-tab">✕</div>`; // Добавляем внутрь вкладки содержимое с номером счетчика
+    createEl.innerHTML = `<p>unnamed</p><div data-close-tab="close-tab" class="close-tab">✕</div>`; // Добавляем внутрь вкладки содержимое с номером счетчика
     tabs.append(createEl) // Добовляем новую вкладку в общий контейнер всех табов
     tabСounter++; // Увеличиваем счетчик на 1
 
@@ -88,6 +88,17 @@ createTab.addEventListener('click', () => { // Обрабатываем клик
     createTabsContent(); // Вызываем функцию создания контента вкладок
     getLastEl() // Вызываем функцию переключения на последний таб 
     createNewCodeArea() // // Вызываем функцию инита всех новых textarea 
+})
+
+document.addEventListener("keydown", (event) => {
+    if (event.code == "KeyN") {
+        createTabs(); // Вызываем функцию создания вкладок
+        createTabsContent(); // Вызываем функцию создания контента вкладок
+        getLastEl() // Вызываем функцию переключения на последний таб 
+        createNewCodeArea() // // Вызываем функцию инита всех новых textare
+    } else if (event.code == "KeyN") {
+
+    }
 })
 
 tabs.addEventListener("click", (event) => { // добавляем обработчик клика по всей области полученного контейнера табов
