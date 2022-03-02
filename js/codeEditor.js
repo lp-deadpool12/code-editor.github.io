@@ -1,3 +1,5 @@
+// ДОСТУП К GITHUB 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
+
 let getAllTextArea = document.getElementsByClassName("content_code-editor-area") // Получаем все эл-ы с классом content_code-editor-area
 let myTextarea = document.querySelector(".content_code-editor-area") // Получаем 1-ый эл с классом content_code-editor-area
 
@@ -37,6 +39,8 @@ let createEl; // Создать вкладку
 let tabСounter = 1; // Счетчик вкладок
 let tabContСounter = 1; // Счетчик контенка вкладок
 let tabContent; // Создать контент вкладки
+let currentTab;
+let currentTabContent;
 
 // Функция для создания новой вкладки
 function createTabs() { // Обявляем функцию
@@ -82,22 +86,35 @@ function getLastEl() { // Обявляем функцию
     getLastTabCont.classList.add("tab-content-active") // Добавляем последнму элементу коллекции класс "tab-content-active
 }
 
+// Функция для скрола контейнера табов до кноца
+function scrollTabsEnd() { // Объявляем функцию
+    tabs.scrollTo(tabs.scrollWidth, 0) // Скролим контейнер табов до конца. 1 параметр скрол по х он равен шиирне самого контейнер, 2 параметр скрол по у равен 0
+}
+
+function delCurrentTab() {
+    console.log(currentTab);
+    console.log(currentTabContent);
+}
+
 // Функия вызова функций createTabs() и createTabsContent() 
 createTab.addEventListener('click', () => { // Обрабатываем клик по кнопке создания вкладок
     createTabs(); // Вызываем функцию создания вкладок
     createTabsContent(); // Вызываем функцию создания контента вкладок
     getLastEl() // Вызываем функцию переключения на последний таб 
-    createNewCodeArea() // // Вызываем функцию инита всех новых textarea 
+    createNewCodeArea() // Вызываем функцию инита всех новых textarea 
+    scrollTabsEnd() // Вызываем функцию для скрола контейнера табов до кноца
 })
 
-document.addEventListener("keydown", (event) => {
-    if (event.code == "KeyN") {
+// Создание таба на клавишу
+document.addEventListener("keydown", (event) => { // // Обрабатываем нажатие калвиши т создания вкладок
+    if (event.code == "Home") { // если код калвиши KeyN
         createTabs(); // Вызываем функцию создания вкладок
         createTabsContent(); // Вызываем функцию создания контента вкладок
         getLastEl() // Вызываем функцию переключения на последний таб 
         createNewCodeArea() // // Вызываем функцию инита всех новых textare
-    } else if (event.code == "KeyN") {
-
+        scrollTabsEnd() // Вызываем функцию для скрола контейнера табов до кноца
+    } else if (event.code == "Delete") {
+        delCurrentTab()
     }
 })
 
@@ -106,6 +123,7 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
     let clickedElem = event.target // Записывам в отдельную пеерменную клинутый элемент
     let getTabsContent = document.querySelectorAll(".content") // Получаем живую коллекцию из всех эл-ов с классом content
     let getTabs = document.querySelectorAll(".tab") // Получаем живую коллекцию из всех эл-ов с классом tab
+
 
     if (clickedElem.hasAttribute("data-close-tab")) { // Проверям наличие атрибута data-close-tab у кликнутого элемента 
         // если условевие верно (возврашает True) то выполняем следующие команды
@@ -120,6 +138,7 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
     } else if (clickedElem.getAttribute("data-tab")) { // выполняется если у клинутого элемента есть атрибут data-tab
 
         let getAttr = clickedElem.getAttribute("data-tab") // записываем в переменную значение атрибута data-tab у кликнутого элемеента
+        currentTab = clickedElem;
 
         getTabs.forEach(tab => { // Перебираем коллекцию вкладок
             tab.classList.remove("active") // Убираем у каждой вкладки класс active
@@ -133,6 +152,7 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
 
             if (getAttr == tabCont.getAttribute("data-tab-content")) { //Выполнится если значение атрибта из переменой getAttr = значению атрибута data-tab-content tabCont
                 tabCont.classList.add("tab-content-active") // Добавляем tabCont класс tab-content-active
+                currentTabContent = tabCont
             }
         });
     }

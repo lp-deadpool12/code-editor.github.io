@@ -350,13 +350,17 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-negative: 2;
-      flex-shrink: 2;
   -ms-flex-line-pack: center;
       align-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.tabs .tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tabs .create-tab {
@@ -413,9 +417,6 @@ body {
   height: 35px;
   -ms-flex-line-pack: center;
       align-content: center;
-  overflow: hidden;
-  -ms-flex-negative: 2;
-      flex-shrink: 2;
   z-index: 1;
 }
 
