@@ -257,6 +257,7 @@ body {
   transition: 0.5s;
   -webkit-transform: translateY(-90%) scale(0);
           transform: translateY(-90%) scale(0);
+  z-index: 10;
 }
 
 .colse_pop_up {
@@ -284,6 +285,7 @@ body {
   border-radius: 10px;
   text-align: center;
   position: relative;
+  z-index: 10;
 }
 
 .feedback_menu__h2 {
@@ -417,7 +419,6 @@ body {
   height: 35px;
   -ms-flex-line-pack: center;
       align-content: center;
-  z-index: 1;
 }
 
 .tab p {
@@ -439,7 +440,6 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  z-index: 10;
   line-height: 10px;
 }
 
