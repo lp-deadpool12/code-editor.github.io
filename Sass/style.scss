@@ -108,7 +108,22 @@ a {
     border: 1px solid #2FB55D;
     box-shadow: 0px 5px 16px 1px rgba(47, 181, 93, 0.35);
     background: rgba(0, 0, 0, 0);
+    transition: 0.3s;
     margin-right: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 216px;
+    height: 56px;
+    color: var(--main-colour);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    border-radius: 5px;
+    &:active {
+        box-shadow: none;
+    }
     &:hover {
         background: #2F8B4E;
     }
@@ -190,6 +205,10 @@ a {
     z-index: 5;
     transition: 0.5s;
     transform: translateY(-90%) scale(0);
+}
+
+.hide_input {
+    display: none;
 }
 
 .colse_pop_up {

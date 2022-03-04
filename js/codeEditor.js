@@ -1,4 +1,6 @@
-// ДОСТУП К GITHUB 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
+// ДОСТУП К GITHUB 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
+// lp-deadpool12
+
 
 let getAllTextArea = document.getElementsByClassName("content_code-editor-area") // Получаем все эл-ы с классом content_code-editor-area
 let myTextarea = document.querySelector(".content_code-editor-area") // Получаем 1-ый эл с классом content_code-editor-area
@@ -31,6 +33,7 @@ openPopUp.addEventListener("click", () => { // обрабатываем клик
     })
 })
 
+
 // Задаем нужные при работе переменные
 const createTab = document.getElementById("create-tab"); // Получаем кнопку которая при клике на нее должна создавать новую вкладку
 const tabs = document.getElementById("tabs__body"); // Плучаем контейнер в который будут добовлятся вкладки 
@@ -39,8 +42,8 @@ let createEl; // Создать вкладку
 let tabСounter = 1; // Счетчик вкладок
 let tabContСounter = 1; // Счетчик контенка вкладок
 let tabContent; // Создать контент вкладки
-let currentTab;
-let currentTabContent;
+let currentTab = document.querySelector(".tab") // Получаем текущий таб
+let currentTabContent = document.querySelector(".content") // Получаем текущий котент таба
 
 // Функция для создания новой вкладки
 function createTabs() { // Обявляем функцию
@@ -50,7 +53,7 @@ function createTabs() { // Обявляем функцию
     createEl.innerHTML = `<p>unnamed</p><div data-close-tab="close-tab" class="close-tab">✕</div>`; // Добавляем внутрь вкладки содержимое с номером счетчика
     tabs.append(createEl) // Добовляем новую вкладку в общий контейнер всех табов
     tabСounter++; // Увеличиваем счетчик на 1
-
+    currentTab = createEl
 }
 
 // Функция для создания контента новой вкладки
@@ -61,6 +64,7 @@ function createTabsContent() { // Обявляем функцию
     tabContent.innerHTML = `<textarea class="content_code-editor-area" name="" id=""></textarea>` // Добавляем внутрь контента вкладки содержимое с номером счетчика
     tabsContentBody.append(tabContent) // Добовляем новый контент вкладки в общий контейнер контента табов
     tabContСounter++ // Увеличиваем счетчик на 1
+    currentTabContent = tabContent
 }
 
 //Функция для переключению на новую вкладку
@@ -91,10 +95,13 @@ function scrollTabsEnd() { // Объявляем функцию
     tabs.scrollTo(tabs.scrollWidth, 0) // Скролим контейнер табов до конца. 1 параметр скрол по х он равен шиирне самого контейнер, 2 параметр скрол по у равен 0
 }
 
-function delCurrentTab() {
-    console.log(currentTab);
-    console.log(currentTabContent);
+//Функция для удаления текущего таба с контентом
+function delCurrentTab() { // Объявляем функцию
+    currentTab.remove() // Удаляем таб
+    currentTabContent.remove() // Удаляем контент таба
 }
+
+
 
 // Функия вызова функций createTabs() и createTabsContent() 
 createTab.addEventListener('click', () => { // Обрабатываем клик по кнопке создания вкладок
@@ -107,6 +114,7 @@ createTab.addEventListener('click', () => { // Обрабатываем клик
 
 // Создание таба на клавишу
 document.addEventListener("keydown", (event) => { // // Обрабатываем нажатие калвиши т создания вкладок
+    // console.log(event);
     if (event.code == "Home") { // если код калвиши KeyN
         createTabs(); // Вызываем функцию создания вкладок
         createTabsContent(); // Вызываем функцию создания контента вкладок
@@ -115,6 +123,7 @@ document.addEventListener("keydown", (event) => { // // Обрабатываем
         scrollTabsEnd() // Вызываем функцию для скрола контейнера табов до кноца
     } else if (event.code == "Delete") {
         delCurrentTab()
+        getLastEl()
     }
 })
 
