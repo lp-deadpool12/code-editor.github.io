@@ -1,24 +1,57 @@
-// ДОСТУП К GITHUB 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
+// ДОСТУП К GITHUB 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 
 // lp-deadpool12
 
-
-let getAllTextArea = document.getElementsByClassName("content_code-editor-area") // Получаем все эл-ы с классом content_code-editor-area
-let myTextarea = document.querySelector(".content_code-editor-area") // Получаем 1-ый эл с классом content_code-editor-area
+// Задаем нужные при работе переменные
+const createTab = document.getElementById("create-tab"); // Получаем кнопку которая при клике на нее должна создавать новую вкладку
+const tabs = document.getElementById("tabs__body"); // Плучаем контейнер в который будут добовлятся вкладки 
+let tabsContentBody = document.querySelector(".tabs-content") // Плучаем контейнер в который будет добовлятся контент
+let createEl; // Создать вкладку
+let tabСounter = 1; // Счетчик вкладок
+let tabContСounter = 1; // Счетчик контенка вкладок
+let tabContent; // Создать контент вкладки
+let currentTab = document.querySelector(".tab") // Получаем текущий таб
+let currentTabContent = document.querySelector(".content") // Получаем текущий котент таба
+let getTabs;
+let getAllTextArea = document.getElementsByClassName("content") // Получаем все эл-ы с классом content_code-editor-area
+let fileVal = localStorage.getItem("fileVal")
+let fileName = localStorage.getItem("fileName")
+let shortenedFileName = fileName.slice(0, 5)
+console.log(shortenedFileName);
 
 // Функция добаваления экземпляра объекта к новой TextArea которая создается при создании вкладки
 function createNewCodeArea() { // Объявляем функцию 
     let lastCodeArea = getAllTextArea[getAllTextArea.length - 1] // Получам поелдний эл из коллекции getAllTextArea
-    let newEditor = CodeMirror.fromTextArea(lastCodeArea, { // Инициализируем поледний эл как объект 
+    let newEditor = CodeMirror(lastCodeArea, { // Инициализируем поледний эл как объект 
         lineNumbers: true, // Добавляем нумерацию строк
         theme: "ayu-dark", // Тема редактораayu-dark
     });
 }
 
-// Даннный код нужен что-бы инициализировать первую textarea 
-let editor = CodeMirror.fromTextArea(myTextarea, { // Инициализируем эл как объект 
-    lineNumbers: true, // Добавляем нумерацию строк
-    theme: "ayu-dark" // Тема редактораayu-dark
-});
+// Функция добаваления экземпляра объекта к новой TextArea которая создается при создании вкладки
+function firstNewCodeArea() { // Объявляем функцию 
+    let firstCodeArea = getAllTextArea[0] // Получам 1 эл из коллекции getAllTextArea
+    let newEditor = CodeMirror(firstCodeArea, { // Инициализируем поледний эл как объект 
+        lineNumbers: true, // Добавляем нумерацию строк
+        theme: "ayu-dark", // Тема редактораayu-dark
+        value: fileVal
+    });
+
+    currentTab.childNodes[0].nextElementSibling.textContent = shortenedFileName
+
+    if (fileName.length <= 10) {
+        currentTab.childNodes[0].nextElementSibling.textContent = fileName
+    } else {
+
+    }
+}
+
+document.onload = firstNewCodeArea();
+
+// // Даннный код нужен что-бы инициализировать первую textarea 
+// let editor = CodeMirror.fromTextArea(myTextarea, { // Инициализируем эл как объект 
+//     lineNumbers: true, // Добавляем нумерацию строк
+//     theme: "ayu-dark" // Тема редактораayu-dark
+// });
 
 
 let openPopUp = document.getElementById("settingsMenuBtn") // получаем кнопку для открытия меню настроек////
@@ -34,23 +67,17 @@ openPopUp.addEventListener("click", () => { // обрабатываем клик
 })
 
 
-// Задаем нужные при работе переменные
-const createTab = document.getElementById("create-tab"); // Получаем кнопку которая при клике на нее должна создавать новую вкладку
-const tabs = document.getElementById("tabs__body"); // Плучаем контейнер в который будут добовлятся вкладки 
-let tabsContentBody = document.querySelector(".tabs-content") // Плучаем контейнер в который будет добовлятся контент
-let createEl; // Создать вкладку
-let tabСounter = 1; // Счетчик вкладок
-let tabContСounter = 1; // Счетчик контенка вкладок
-let tabContent; // Создать контент вкладки
-let currentTab = document.querySelector(".tab") // Получаем текущий таб
-let currentTabContent = document.querySelector(".content") // Получаем текущий котент таба
+
+
+
+
 
 // Функция для создания новой вкладки
 function createTabs() { // Обявляем функцию
     createEl = document.createElement('div'); // Создаем новый div новый контейнер для вкладки
     createEl.className = 'tab'; // Добавляем новому диву калсс tab
     createEl.setAttribute("data-tab", "#" + tabСounter) // Добавляем новой вкладке атрибут data-tab со значеним счетчика вкладок
-    createEl.innerHTML = `<p>unnamed</p><div data-close-tab="close-tab" class="close-tab">✕</div>`; // Добавляем внутрь вкладки содержимое с номером счетчика
+    createEl.innerHTML = `<p data-tab-name="tabName" >unnamed</p><div data-close-tab="close-tab" class="close-tab">✕</div>`; // Добавляем внутрь вкладки содержимое с номером счетчика
     tabs.append(createEl) // Добовляем новую вкладку в общий контейнер всех табов
     tabСounter++; // Увеличиваем счетчик на 1
     currentTab = createEl
@@ -61,7 +88,7 @@ function createTabsContent() { // Обявляем функцию
     tabContent = document.createElement("div") // Создаем новый div новый контейнер для контента вкладки
     tabContent.classList.add('content') // Добавляем новому диву калсс content
     tabContent.setAttribute("data-tab-content", "#" + tabContСounter) // Добавляем контенту новой вкладки атрибут data-tab-content со значеним счетчика контента вкладок
-    tabContent.innerHTML = `<textarea class="content_code-editor-area" name="" id=""></textarea>` // Добавляем внутрь контента вкладки содержимое с номером счетчика
+        //tabContent.innerHTML = `<textarea class="content_code-editor-area" name="" id=""></textarea>` // Добавляем внутрь контента вкладки содержимое с номером счетчика
     tabsContentBody.append(tabContent) // Добовляем новый контент вкладки в общий контейнер контента табов
     tabContСounter++ // Увеличиваем счетчик на 1
     currentTabContent = tabContent
@@ -88,6 +115,8 @@ function getLastEl() { // Обявляем функцию
 
     getLastTab.classList.add("active") // Добавляем последнму элементу коллекции класс active
     getLastTabCont.classList.add("tab-content-active") // Добавляем последнму элементу коллекции класс "tab-content-active
+    currentTab = getLastTab
+    currentTabContent = getLastTabCont
 }
 
 // Функция для скрола контейнера табов до кноца
@@ -101,7 +130,13 @@ function delCurrentTab() { // Объявляем функцию
     currentTabContent.remove() // Удаляем контент таба
 }
 
-
+function switcToaAjacentTab() {
+    if (currentTab.nextSibling != null) {
+        currentTab.closest('.tab').nextElementSibling.classList.add("active");
+    } else {
+        currentTab.closest('.tab').previousElementSibling;
+    }
+}
 
 // Функия вызова функций createTabs() и createTabsContent() 
 createTab.addEventListener('click', () => { // Обрабатываем клик по кнопке создания вкладок
@@ -110,6 +145,7 @@ createTab.addEventListener('click', () => { // Обрабатываем клик
     getLastEl() // Вызываем функцию переключения на последний таб 
     createNewCodeArea() // Вызываем функцию инита всех новых textarea 
     scrollTabsEnd() // Вызываем функцию для скрола контейнера табов до кноца
+    getTabs = document.querySelectorAll(".tab") // Получаем живую коллекцию из всех эл-ов с классом tab
 })
 
 // Создание таба на клавишу
@@ -123,7 +159,8 @@ document.addEventListener("keydown", (event) => { // // Обрабатываем
         scrollTabsEnd() // Вызываем функцию для скрола контейнера табов до кноца
     } else if (event.code == "Delete") {
         delCurrentTab()
-        getLastEl()
+            //switcToaAjacentTab()
+        getLastEl() //Функция для переключению на новую вкладку
     }
 })
 
@@ -131,8 +168,7 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
 
     let clickedElem = event.target // Записывам в отдельную пеерменную клинутый элемент
     let getTabsContent = document.querySelectorAll(".content") // Получаем живую коллекцию из всех эл-ов с классом content
-    let getTabs = document.querySelectorAll(".tab") // Получаем живую коллекцию из всех эл-ов с классом tab
-
+    getTabs = document.querySelectorAll(".tab") // Получаем живую коллекцию из всех эл-ов с классом tab
 
     if (clickedElem.hasAttribute("data-close-tab")) { // Проверям наличие атрибута data-close-tab у кликнутого элемента 
         // если условевие верно (возврашает True) то выполняем следующие команды
@@ -143,6 +179,27 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
         })
         clickedElem.parentNode.remove() // Удаляем родительский элемент у кликнутого элемента (так как сам элемент вложен он тоже удалиться с остальными дочерними)
         getLastEl() // Вызываем функцию переключения на последний таб 
+
+    } else if (clickedElem.hasAttribute("data-tab-name")) {
+        console.log("hi");
+        let getAttr = clickedElem.parentNode.getAttribute("data-tab") // записываем в переменную значение атрибута data-tab у кликнутого элемеента
+        currentTab = clickedElem.parentNode;
+
+        getTabs.forEach(tab => { // Перебираем коллекцию вкладок
+            tab.classList.remove("active") // Убираем у каждой вкладки класс active
+        });
+
+        clickedElem.parentNode.classList.add("active") // добовляем для кликнутого элмента класс active
+
+        getTabsContent.forEach(tabCont => { // Перебираем коллекцию с полученным контентом вкладок где tabCont следующая вкладка при новой итерации
+
+            tabCont.classList.remove("tab-content-active") // Убираем у контента каждой вкладки класс tab-content-active
+
+            if (getAttr == tabCont.getAttribute("data-tab-content")) { //Выполнится если значение атрибта из переменой getAttr = значению атрибута data-tab-content tabCont
+                tabCont.classList.add("tab-content-active") // Добавляем tabCont класс tab-content-active
+                currentTabContent = tabCont
+            }
+        });
 
     } else if (clickedElem.getAttribute("data-tab")) { // выполняется если у клинутого элемента есть атрибут data-tab
 

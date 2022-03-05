@@ -1,8 +1,8 @@
 @charset "UTF-8";
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
   /* ширина для вертикального скролла */
-  height: 10px;
+  height: 7px;
   /* высота для горизонтального скролла */
   background: rgba(24, 52, 56, 0.5);
   opacity: 0.35;
@@ -365,6 +365,23 @@ body {
   display: none;
 }
 
+.tabs:hover ::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+  /* ширина для вертикального скролла */
+  height: 5px;
+  /* высота для горизонтального скролла */
+  background: rgba(24, 52, 56, 0.5);
+  opacity: 0.30;
+}
+
+.tabs:hover ::-webkit-scrollbar-thumb {
+  display: block;
+  background-color: #0C3A42;
+  border-radius: 14px;
+  opacity: 0.5;
+}
+
 .tabs .create-tab {
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -407,9 +424,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -419,6 +435,13 @@ body {
   height: 35px;
   -ms-flex-line-pack: center;
       align-content: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 105px;
+}
+
+.tab:hover {
+  background: rgba(6, 32, 36, 0.4);
 }
 
 .tab p {
@@ -468,6 +491,11 @@ body {
   background: #062024;
   -webkit-animation: tabOpenAnimate 0.3s ease forwards;
           animation: tabOpenAnimate 0.3s ease forwards;
+  transition: 0.2s;
+}
+
+.active:hover {
+  background-color: #062024;
 }
 
 @-webkit-keyframes tabOpenAnimate {
