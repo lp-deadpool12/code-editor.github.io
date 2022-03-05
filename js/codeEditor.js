@@ -1,4 +1,4 @@
-// ДОСТУП К GITHUB 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
+// ДОСТУП К GITHUB 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
 // lp-deadpool12
 
 // Задаем нужные при работе переменные
@@ -15,7 +15,8 @@ let getTabs;
 let getAllTextArea = document.getElementsByClassName("content") // Получаем все эл-ы с классом content_code-editor-area
 let fileVal = localStorage.getItem("fileVal") ?? ""
 let fileName = localStorage.getItem("fileName") ?? "unnamed"
-console.log(fileVal, fileName);
+let shortFileName = fileName.slice(0, 10)
+console.log(shortFileName);
 
 // Функция добаваления экземпляра объекта к новой TextArea которая создается при создании вкладки
 function createNewCodeArea() { // Объявляем функцию 
@@ -39,7 +40,7 @@ function firstNewCodeArea() { // Объявляем функцию
     if (fileName.length <= 10) {
         currentTab.childNodes[0].nextElementSibling.textContent = fileName
     } else {
-        currentTab.childNodes[0].nextElementSibling.textContent = fileName.slice[0, 10]
+        currentTab.childNodes[0].nextElementSibling.textContent = shortFileName 
     }
 }
 
