@@ -13,10 +13,9 @@ let currentTab = document.querySelector(".tab") // Получаем текущи
 let currentTabContent = document.querySelector(".content") // Получаем текущий котент таба
 let getTabs;
 let getAllTextArea = document.getElementsByClassName("content") // Получаем все эл-ы с классом content_code-editor-area
-let fileVal = localStorage.getItem("fileVal")
-let fileName = localStorage.getItem("fileName")
+let fileVal = localStorage.getItem("fileVal") ?? ""
+let fileName = localStorage.getItem("fileName") ?? "unnamed"
 console.log(fileVal, fileName);
-console.log(shortenedFileName);
 
 // Функция добаваления экземпляра объекта к новой TextArea которая создается при создании вкладки
 function createNewCodeArea() { // Объявляем функцию 
@@ -36,7 +35,6 @@ function firstNewCodeArea() { // Объявляем функцию
         value: fileVal
     });
 
-    currentTab.childNodes[0].nextElementSibling.textContent = shortenedFileName
 
     if (fileName.length <= 10) {
         currentTab.childNodes[0].nextElementSibling.textContent = fileName
