@@ -1,6 +1,8 @@
 // ДОСТУП К GITHUB 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
 // lp-deadpool12
 
+
+
 // Задаем нужные при работе переменные
 const createTab = document.getElementById("create-tab"); // Получаем кнопку которая при клике на нее должна создавать новую вкладку
 const tabs = document.getElementById("tabs__body"); // Плучаем контейнер в который будут добовлятся вкладки 
@@ -61,6 +63,12 @@ openPopUp.addEventListener("click", () => { // обрабатываем клик
     popUpBody.addEventListener("click", (clicedEl) => { // обрабатываем все клики внутри меню настроек
         if (clicedEl.target.hasAttribute("data-menu-close")) { // Проверка на наличие у кликнутого элемента атрибута data-menu-close
             popUpBody.classList.remove("settingsMenuActive") // удаляем класс settingsMenuActive для меню настроек
+        }else if ( clicedEl.target.hasAttribute("data-file-download") || clicedEl.target.parentNode.hasAttribute("data-file-download") ){
+            
+            var FileSaver = require('file-saver');
+            var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+            FileSaver.saveAs(blob, "hello world.txt");
+            console.log("his");
         }
     })
 })
@@ -222,3 +230,5 @@ tabs.addEventListener("click", (event) => { // добавляем обработ
         });
     }
 })
+
+

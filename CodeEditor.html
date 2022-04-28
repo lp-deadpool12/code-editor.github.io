@@ -37,26 +37,26 @@
                 <div data-menu-close="close" class="close_menu">&#10005</div>
                 <h2>Settings</h2>
                 <ul class="menuList">
-                    <div>
+                    <div data-file-download="download-file" >
                         <li class="item">Download</li>
                     </div>
                     <div>
                         <li class="item1">Save</li>
                     </div>
                     <div>
-                        <li onclick="oneWindow()" class="item2">One window</li>
+                        <li class="item2">One window</li>
                     </div>
                     <div>
-                        <li onclick="twoWindow()" class="item3">Two windows</li>
+                        <li class="item3">Two windows</li>
                     </div>
                     <div>
-                        <li onclick="threeWindow()" class="item4">Three windows</li>
+                        <liclass="item4">Three windows</li>
                     </div>
                     <div>
                         <li id="feedbackPopUpOpen" class="item5">Feedback</li>
                     </div>
                     <div>
-                        <li onclick="hideHeader()" id="hide_show_header" class="item6">Hide header</li>
+                        <li id="hide_show_header" class="item6">Hide header</li>
                     </div>
                 </ul>
             </div>
@@ -87,7 +87,8 @@
         <script src="plugins/codemirror/lib/codemirror.js"></script>
         <script src="plugins/codemirror/mode/javascript/javascript.js"></script>
         <script src="plugins/codemirror/addon/hint/javascript-hint.js"></script>
-        <script src="js/codeEditor.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+        <script src="js/codeEditor.js" defer  type="module"></script>
 </body>
 
 </html>
